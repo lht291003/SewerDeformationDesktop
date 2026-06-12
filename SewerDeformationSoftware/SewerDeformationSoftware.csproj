@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+  <OutputType>WinExe</OutputType>
+  <LangVersion>14.0</LangVersion>
+  <Nullable>Enable</Nullable>
+  <TargetFramework>net10.0</TargetFramework>
+  <BaseOutputPath>Avalonia\</BaseOutputPath>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <None Remove="Images\BuildImg.svg" />
+    <None Remove="Images\FilesImg.svg" />
+    <None Remove="Images\ModelImg.svg" />
+    <None Remove="Images\PhotoImg.svg" />
+    <None Remove="Images\VideoImg.svg" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <AvaloniaResource Include="Images\BuildImg.svg" />
+    <AvaloniaResource Include="Images\FilesImg.svg" />
+    <AvaloniaResource Include="Images\ModelImg.svg" />
+    <AvaloniaResource Include="Images\PhotoImg.svg" />
+    <AvaloniaResource Include="Images\VideoImg.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xaml.Behaviors.Avalonia" Version="12.0.0.1" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.4" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.4" />
+    <PackageReference Include="ScottPlot.Avalonia" Version="5.1.58" />
+    <PackageReference Include="EPPlus" Version="8.6.0" />
+    <PackageReference Include="Avalonia" Version="12.0.4" />
+    <PackageReference Include="YoloSharpOnnx" Version="3.2.2" />
+    <PackageReference Include="Avalonia.Desktop" Version="12.0.4" />
+  </ItemGroup>
+</Project>

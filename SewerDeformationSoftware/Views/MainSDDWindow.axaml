@@ -1,0 +1,8 @@
+<Window
+    xmlns:X="http://schemas.microsoft.com/winfx/2006/xaml"
+    X:Class="SewerDeformationSoftware.Views.MainSDDWindow"
+    xmlns:AI="http://schemas.microsoft.com/xaml/behaviors"
+    Width="1200" Height="750" DataContext="{StaticResource BrainDBC}"
+    Title="PHẦN MỀM DỰ ĐOÁN BIẾN DẠNG HÌNH HỌC ĐƯỜNG CỐNG THOÁT NƯỚC"
+    xmlns="https://github.com/avaloniaui">
+</Window>

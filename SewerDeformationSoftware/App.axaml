@@ -1,0 +1,17 @@
+<Application
+    xmlns="https://github.com/avaloniaui" xmlns:X="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:DBContextFiles="using:SewerDeformationSoftware.Logics.ViewModels"
+    xmlns:ConverterFiles="using:SewerDeformationSoftware.Logics.Converters"
+    X:Class="SewerDeformationSoftware.App" RequestedThemeVariant="Default">
+    
+    <Application.Styles>
+        <FluentTheme/>
+    </Application.Styles>
+
+    <Application.Resources>
+        <DBContextFiles:Brain X:Key="BrainDBC"/>
+        <DBContextFiles:Build X:Key="BuildDBC"/>
+        <DBContextFiles:Photo X:Key="PhotoDBC"/>
+        <DBContextFiles:Video X:Key="VideoDBC"/>
+    </Application.Resources>
+</Application>
