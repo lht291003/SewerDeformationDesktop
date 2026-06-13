@@ -1,8 +1,49 @@
 <Window
     xmlns:X="http://schemas.microsoft.com/winfx/2006/xaml"
-    X:Class="SewerDeformationSoftware.Views.MainSDDWindow"
     xmlns:AI="http://schemas.microsoft.com/xaml/behaviors"
+    X:Class="SewerDeformationSoftware.Views.MainSDDWindow"
+    xmlns:SVGImg="using:Avalonia.Svg.Skia"
     Width="1200" Height="750" DataContext="{StaticResource BrainDBC}"
     Title="PHẦN MỀM DỰ ĐOÁN BIẾN DẠNG HÌNH HỌC ĐƯỜNG CỐNG THOÁT NƯỚC"
-    xmlns="https://github.com/avaloniaui">
+    xmlns="https://github.com/avaloniaui"
+    WindowStartupLocation="CenterScreen">
+    <Window.Styles>
+        <Style Selector="TextBlock.Text">
+            <Setter Property="FontFamily" Value="Cascadia Code"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style Selector="ListBoxItem">
+            <Setter Property="Padding" Value="0.0 7.5 0.0 7.5"/>
+        </Style>
+        <Style Selector="SVGImg|Svg.Icon">
+            <Setter Property="Width" Value="030"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+    </Window.Styles>
+    <SplitView IsPaneOpen="True" DisplayMode="CompactInline" OpenPaneLength="275" CompactPaneLength="50" PanePlacement="Left">
+        <SplitView.Pane>
+            <ListBox>
+                <ListBoxItem Name="BuildControl">
+                    <StackPanel Orientation="Horizontal">
+                        <SVGImg:Svg Path="/Images/BuildImg.svg" Classes="Icon"/>
+                        <TextBlock Text="CẤU HÌNH MÔ HÌNH YOLO" Classes="Text"/>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem Name="PhotoControl">
+                    <StackPanel Orientation="Horizontal">
+                        <SVGImg:Svg Path="/Images/PhotoImg.svg" Classes="Icon"/>
+                        <TextBlock Text="PHÂN TÍCH VỚI ẢNH ĐƠN" Classes="Text"/>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem Name="VideoControl">
+                    <StackPanel Orientation="Horizontal">
+                        <SVGImg:Svg Path="/Images/VideoImg.svg" Classes="Icon"/>
+                        <TextBlock Text="SUY LUẬN VIDEO / CLIP" Classes="Text"/>
+                    </StackPanel>
+                </ListBoxItem>
+            </ListBox>
+        </SplitView.Pane>
+    </SplitView>
 </Window>
