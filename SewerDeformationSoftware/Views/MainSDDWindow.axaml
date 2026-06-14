@@ -4,6 +4,7 @@
     X:Class="SewerDeformationSoftware.Views.MainSDDWindow"
     xmlns:SVGImg="using:Avalonia.Svg.Skia"
     Width="1200" Height="750" DataContext="{StaticResource BrainDBC}"
+    TransparencyLevelHint="Mica" Background="Transparent"
     Title="PHẦN MỀM DỰ ĐOÁN BIẾN DẠNG HÌNH HỌC ĐƯỜNG CỐNG THOÁT NƯỚC"
     xmlns="https://github.com/avaloniaui"
     WindowStartupLocation="CenterScreen">
