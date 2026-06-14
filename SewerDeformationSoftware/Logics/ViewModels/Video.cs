@@ -1,5 +1,5 @@
 ﻿namespace SewerDeformationSoftware.Logics.ViewModels;
 
-public class Video
+public class Video : Basis
 {
 }

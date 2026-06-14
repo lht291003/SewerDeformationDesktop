@@ -1,5 +1,5 @@
 ﻿namespace SewerDeformationSoftware.Logics.ViewModels;
 
-public class Photo
+public class Photo : Basis
 {
 }

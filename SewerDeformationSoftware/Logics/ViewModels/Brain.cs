@@ -1,5 +1,5 @@
 ﻿namespace SewerDeformationSoftware.Logics.ViewModels;
 
-public class Brain
+public class Brain : Basis
 {
 }
