@@ -1,6 +1,15 @@
 ﻿global using Avalonia;
 global using Avalonia.Controls;
 global using Avalonia.Controls.ApplicationLifetimes;
+global using Avalonia.Data.Converters;
+global using Avalonia.Labs.Input;
 global using Avalonia.Markup.Xaml;
 global using SewerDeformationSoftware.Views;
 global using System;
+global using System.Collections.Generic;
+global using System.ComponentModel;
+global using System.Globalization;
+global using System.Linq;
+global using System.Runtime.CompilerServices;
+global using System.Threading.Tasks;
+global using System.Windows.Input;

@@ -1,13 +1,13 @@
 <Window
+    xmlns:VM="using:SewerDeformationSoftware.Logics.ViewModels"
+    X:DataType="VM:Brain" xmlns="https://github.com/avaloniaui"
     xmlns:X="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:AI="http://schemas.microsoft.com/xaml/behaviors"
     X:Class="SewerDeformationSoftware.Views.MainSDDWindow"
-    xmlns:SVGImg="using:Avalonia.Svg.Skia"
     Width="1200" Height="750" DataContext="{StaticResource BrainDBC}"
-    TransparencyLevelHint="Mica" Background="Transparent"
     Title="PHẦN MỀM DỰ ĐOÁN BIẾN DẠNG HÌNH HỌC ĐƯỜNG CỐNG THOÁT NƯỚC"
-    xmlns="https://github.com/avaloniaui"
-    WindowStartupLocation="CenterScreen">
+    TransparencyLevelHint="Mica" WindowStartupLocation="CenterScreen"
+    Background="Transparent" xmlns:SVGImg="using:Avalonia.Svg.Skia"
+    MinWidth="960.00" MinHeight="600.00">
     <Window.Styles>
         <Style Selector="TextBlock.Text">
             <Setter Property="FontFamily" Value="Cascadia Code"/>
@@ -24,26 +24,41 @@
         </Style>
     </Window.Styles>
     <SplitView IsPaneOpen="True" DisplayMode="CompactInline" OpenPaneLength="275" CompactPaneLength="50" PanePlacement="Left">
+        <SplitView.Content>
+            <Panel X:Name="Screen"/>
+        </SplitView.Content>
         <SplitView.Pane>
-            <ListBox>
-                <ListBoxItem Name="BuildControl">
+            <ListBox X:Name="UVList">
+                <ListBoxItem X:Name="BuildView">
                     <StackPanel Orientation="Horizontal">
                         <SVGImg:Svg Path="/Images/BuildImg.svg" Classes="Icon"/>
                         <TextBlock Text="CẤU HÌNH MÔ HÌNH YOLO" Classes="Text"/>
                     </StackPanel>
                 </ListBoxItem>
-                <ListBoxItem Name="PhotoControl">
+                <ListBoxItem X:Name="PhotoView">
                     <StackPanel Orientation="Horizontal">
                         <SVGImg:Svg Path="/Images/PhotoImg.svg" Classes="Icon"/>
                         <TextBlock Text="PHÂN TÍCH VỚI ẢNH ĐƠN" Classes="Text"/>
                     </StackPanel>
                 </ListBoxItem>
-                <ListBoxItem Name="VideoControl">
+                <ListBoxItem X:Name="VideoView">
                     <StackPanel Orientation="Horizontal">
                         <SVGImg:Svg Path="/Images/VideoImg.svg" Classes="Icon"/>
                         <TextBlock Text="SUY LUẬN VIDEO / CLIP" Classes="Text"/>
                     </StackPanel>
                 </ListBoxItem>
+                <Interaction.Behaviors>
+                    <EventTriggerBehavior EventName="SelectionChanged">
+                        <InvokeCommandAction Command="{Binding ControlDisplayCommand}">
+                            <InvokeCommandAction.CommandParameter>
+                                <MultiBinding Converter="{StaticResource PackBinding}">
+                                    <Binding ElementName="Screen"/>
+                                    <Binding ElementName="UVList"/>
+                                </MultiBinding>
+                            </InvokeCommandAction.CommandParameter>
+                        </InvokeCommandAction>
+                    </EventTriggerBehavior>
+                </Interaction.Behaviors>
             </ListBox>
         </SplitView.Pane>
     </SplitView>
