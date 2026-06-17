@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-  <OutputType>WinExe</OutputType>
-  <LangVersion>14.0</LangVersion>
-  <Nullable>Enable</Nullable>
-  <TargetFramework>net10.0</TargetFramework>
-  <BaseOutputPath>Avalonia\</BaseOutputPath>
+    <OutputType>WinExe</OutputType>
+    <LangVersion>14.0</LangVersion>
+    <Nullable>Enable</Nullable>
+    <TargetFramework>net10.0</TargetFramework>
+    <BaseOutputPath>Avalonia\</BaseOutputPath>
   </PropertyGroup>
 	
   <ItemGroup>
@@ -24,14 +24,14 @@
   </ItemGroup>
 
   <ItemGroup>
-	<PackageReference Include="Svg.Controls.Skia.Avalonia" Version="12.0.0.12" />
+	<PackageReference Include="Svg.Controls.Skia.Avalonia" Version="12.0.0.13" />
     <PackageReference Include="Xaml.Behaviors.Avalonia" Version="12.0.0.1" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.4" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.4" />
     <PackageReference Include="ScottPlot.Avalonia" Version="5.1.58" />
-    <PackageReference Include="EPPlus" Version="8.6.0" />
+    <PackageReference Include="EPPlus" Version="8.6.1" />
     <PackageReference Include="Avalonia" Version="12.0.4" />
-    <PackageReference Include="YoloSharpOnnx" Version="3.2.2" />
+    <PackageReference Include="YoloSharpOnnx" Version="3.2.3" />
     <PackageReference Include="Avalonia.Desktop" Version="12.0.4" />
 	<PackageReference Include="Avalonia.Labs.CommandManager" Version="12.0.2" />
   </ItemGroup>
