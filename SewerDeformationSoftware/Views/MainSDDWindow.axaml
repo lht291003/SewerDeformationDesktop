@@ -1,12 +1,11 @@
 <Window
+    xmlns:SVGImg="using:Avalonia.Svg.Skia" WindowStartupLocation="CenterScreen"
     xmlns:VM="using:SewerDeformationSoftware.Logics.ViewModels"
     X:DataType="VM:Brain" xmlns="https://github.com/avaloniaui"
     xmlns:X="http://schemas.microsoft.com/winfx/2006/xaml"
     X:Class="SewerDeformationSoftware.Views.MainSDDWindow"
     Width="1200" Height="750" DataContext="{StaticResource BrainDBC}"
     Title="PHẦN MỀM DỰ ĐOÁN BIẾN DẠNG HÌNH HỌC ĐƯỜNG CỐNG THOÁT NƯỚC"
-    TransparencyLevelHint="Mica" WindowStartupLocation="CenterScreen"
-    Background="Transparent" xmlns:SVGImg="using:Avalonia.Svg.Skia"
     MinWidth="960.00" MinHeight="600.00">
     <Window.Styles>
         <Style Selector="TextBlock.Text">

@@ -2,10 +2,11 @@
     xmlns="https://github.com/avaloniaui" xmlns:X="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:DBContextFiles="using:SewerDeformationSoftware.Logics.ViewModels"
     xmlns:ConverterFiles="using:SewerDeformationSoftware.Logics.Converters"
+    xmlns:MDTheme="using:Material.Styles.Themes"
     X:Class="SewerDeformationSoftware.App" RequestedThemeVariant="Default">
     
     <Application.Styles>
-        <FluentTheme/>
+        <MDTheme:MaterialTheme PrimaryColor="Indigo" SecondaryColor="Lime" BaseTheme="Inherit"/>
     </Application.Styles>
 
     <Application.Resources>
