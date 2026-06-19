@@ -14,7 +14,7 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         <Style Selector="ListBoxItem">
-            <Setter Property="Padding" Value="0.0 7.5 0.0 7.5"/>
+            <Setter Property="Padding" Value="0"/>
         </Style>
         <Style Selector="SVGImg|Svg.Icon">
             <Setter Property="Width" Value="030"/>
