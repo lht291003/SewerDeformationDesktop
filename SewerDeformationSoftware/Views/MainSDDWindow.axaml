@@ -4,6 +4,7 @@
     X:DataType="VM:Brain" xmlns="https://github.com/avaloniaui"
     xmlns:X="http://schemas.microsoft.com/winfx/2006/xaml"
     X:Class="SewerDeformationSoftware.Views.MainSDDWindow"
+    xmlns:Material="using:Material.Styles.Controls" X:Name="MainHome"
     Width="1200" Height="750" DataContext="{StaticResource BrainDBC}"
     Title="PHẦN MỀM DỰ ĐOÁN BIẾN DẠNG HÌNH HỌC ĐƯỜNG CỐNG THOÁT NƯỚC"
     MinWidth="960.00" MinHeight="600.00">
@@ -22,11 +23,8 @@
             <Setter Property="Margin" Value="10"/>
         </Style>
     </Window.Styles>
-    <SplitView IsPaneOpen="True" DisplayMode="CompactInline" OpenPaneLength="275" CompactPaneLength="50" PanePlacement="Left">
-        <SplitView.Content>
-            <Panel X:Name="Screen"/>
-        </SplitView.Content>
-        <SplitView.Pane>
+    <Material:NavigationDrawer LeftDrawerOpened="True" LeftDrawerWidth="265" LeftDrawerExpandThresholdWidth="{Binding #MainHome.MinWidth}">
+        <Material:NavigationDrawer.LeftDrawerContent>
             <ListBox X:Name="UVList">
                 <ListBoxItem X:Name="BuildView">
                     <StackPanel Orientation="Horizontal">
@@ -51,14 +49,15 @@
                         <InvokeCommandAction Command="{Binding ControlDisplayCommand}">
                             <InvokeCommandAction.CommandParameter>
                                 <MultiBinding Converter="{StaticResource PackBinding}">
-                                    <Binding ElementName="Screen"/>
-                                    <Binding ElementName="UVList"/>
+                                    <Binding Path="#Screen"/>
+                                    <Binding Path="#UVList"/>
                                 </MultiBinding>
                             </InvokeCommandAction.CommandParameter>
                         </InvokeCommandAction>
                     </EventTriggerBehavior>
                 </Interaction.Behaviors>
             </ListBox>
-        </SplitView.Pane>
-    </SplitView>
+        </Material:NavigationDrawer.LeftDrawerContent>
+        <Panel X:Name="Screen"/>
+    </Material:NavigationDrawer>
 </Window>
