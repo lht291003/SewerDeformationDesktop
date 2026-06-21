@@ -24,7 +24,8 @@
                 <RowDefinition Height="10.0"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Material:Card CornerRadius="5">
+            <Material:Card
+                Padding="0" X:Name="DropCard" DragDrop.AllowDrop="True">
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50"/>
@@ -33,7 +34,7 @@
                         <ColumnDefinition Width="10"/>
                         <ColumnDefinition Width="95"/>
                     </Grid.ColumnDefinitions>
-                    <SVGImg:Svg Path="/Images/FilesImg.svg" Height="50.0"/>
+                    <SVGImg:Svg Path="/Images/FilesImg.svg" Height="50"/>
                     <Grid Grid.Column="2">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -47,9 +48,67 @@
                             Loại mô hình: <Bold> ONNX </Bold>
                         </TextBlock>
                     </Grid>
-                    <Button Content="Browse" Grid.Column="4" Height="050"/>
+                    <Button Content="Browse" Grid.Column="4" Height="50.0" Command="{Binding Browse}"/>
                 </Grid>
             </Material:Card>
+            <Grid IsVisible="{Binding ModelName, Converter={StaticResource None2Hidden}}" Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10.0"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10.0"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid
+                    Margin="10.0"
+                    Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="95"/>
+                    </Grid.ColumnDefinitions>
+                    <SVGImg:Svg
+                        Path="/Images/ModelImg.svg"/>
+                    <TextBlock
+                        Text="{Binding ModelName}"
+                        VerticalAlignment="Center"
+                        Grid.Column="2"
+                        FontWeight="ExtraBlack"/>
+                    <Button Content="Remove" Grid.Column="4" Height="50.0" Command="{Binding Remove}"/>
+                </Grid>
+                <Grid
+                    Margin="10.0"
+                    Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="10.0"/>
+                        <ColumnDefinition Width="1.0*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Thiết bị suy luận" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <Grid
+                        Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="10.0"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton Content="CPU" GroupName="Device" Grid.Column="0"
+                                     IsChecked="{Binding GetDevice, Converter={StaticResource Radios2Text}, ConverterParameter='CPU'}"/>
+                        <RadioButton Content="GPU" GroupName="Device" Grid.Column="2"
+                                     IsChecked="{Binding GetDevice, Converter={StaticResource Radios2Text}, ConverterParameter='GPU'}"/>
+                    </Grid>
+                </Grid>
+                <Grid
+                    Margin="10.0"
+                    Grid.Row="4">
+                    <Button
+                        Content="Cài đặt mô hình YOLO"
+                        Command="{Binding Upload}"
+                        Height="50" IsDefault="True"/>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Grid>
