@@ -4,7 +4,7 @@ global using Avalonia.Controls.ApplicationLifetimes;
 global using Avalonia.Data;
 global using Avalonia.Data.Converters;
 global using Avalonia.Input;
-global using Avalonia.Labs.Input;
+global using Avalonia.Interactivity;
 global using Avalonia.Markup.Xaml;
 global using Avalonia.Platform.Storage;
 global using Avalonia.Threading;
