@@ -16,6 +16,8 @@ public partial class App : Application
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime Desk)
         {
             Desk.MainWindow = new MainSDDWindow();
+
+            Desk.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
 
         Array.ForEach(new RoutedEvent[] { InputElement.PointerReleasedEvent, InputElement.KeyUpEvent, InputElement.GotFocusEvent, InputElement.LostFocusEvent }, AddCommandRequeryHandlers);

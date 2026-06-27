@@ -71,10 +71,32 @@ public class Build : Basis
     {
         if (YOLOSeg.Models.IsRunning)
         {
-            Message.ShowErrors("Không thể tải, mô hình đang chạy");
+            Message.ShowErrors("Không thể tải, mô hình hiên tại đang sử dụng");
         }
         else
         {
+            Waiting.ShowProgressRing();
+
+            YOLOSeg.Models.DeviceType = GetDevice;
+
+            YOLOSeg.Models.KeyYSModel = await Task.Run(() =>
+            {
+                if (YOLOSeg.Models.DeviceType.Equals("CPU"))
+                {
+                    return new YoloSharp(new ExecutionProviderCPU(ModelPath));
+                }
+
+                if (OperatingSystem.IsLinux())
+                {
+                    return new YoloSharp(new ExecutionProviderCUDA(ModelPath));
+                }
+
+                return new YoloSharp(new ExecutionProviderDirectML(ModelPath));
+            });
+
+            Waiting.HideProgressRing();
+
+            Message.ShowSuccess($"Mô hình {ModelName} đã tải lên thành công");
         }
     }
 

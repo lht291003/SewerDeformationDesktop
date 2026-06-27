@@ -1,0 +1,23 @@
+<Window
+    xmlns:SVGImg="using:Avalonia.Svg.Skia"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:X="http://schemas.microsoft.com/winfx/2006/xaml"
+    X:Class="SewerDeformationSoftware.Views.WaitIndicator"
+    xmlns:Material="using:Material.Styles.Controls" ShowInTaskbar="False" Cursor="Wait"
+    WindowStartupLocation="CenterOwner"
+    SizeToContent="WidthAndHeight" WindowDecorations="None" Background="Transparent">
+    <Material:Card>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10.0"/>
+                <ColumnDefinition Width="1.0*"/>
+            </Grid.ColumnDefinitions>
+            <ProgressBar Height="75" Width="75"
+                         IsIndeterminate="True"
+                         Classes="Circular"/>
+            <TextBlock FontSize="20.0" FontWeight="Bold" Grid.Column="2"
+                       VerticalAlignment="Center" Text="Đang xử lý..."/>
+        </Grid>
+    </Material:Card>
+</Window>

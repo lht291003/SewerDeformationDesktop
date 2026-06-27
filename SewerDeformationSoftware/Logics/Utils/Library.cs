@@ -24,3 +24,4 @@ global using System.Runtime.CompilerServices;
 global using System.Threading.Tasks;
 global using System.Windows.Input;
 global using YoloSharpOnnx;
+global using YoloSharpOnnx.Providers;
