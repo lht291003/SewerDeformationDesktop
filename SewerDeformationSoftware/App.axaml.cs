@@ -7,19 +7,19 @@ public partial class App : Application
         AvaloniaXamlLoader.Load(this);
     }
 
-    public void AddCommandRequeryHandlers(RoutedEvent Event)
-
-                                   => Event.AddClassHandler(typeof(TopLevel), (_, _) => CommandManager.NotifyCommandRequery(), RoutingStrategies.Direct | RoutingStrategies.Bubble, 0 == 0);
-
     public override void OnFrameworkInitializationCompleted()
     {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime Desk)
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime A)
         {
-            Desk.MainWindow = new MainSDDWindow();
+            A.MainWindow = new MainSDDWindow();
 
-            Desk.ShutdownMode = ShutdownMode.OnMainWindowClose;
+            A.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
 
         Array.ForEach(new RoutedEvent[] { InputElement.PointerReleasedEvent, InputElement.KeyUpEvent, InputElement.GotFocusEvent, InputElement.LostFocusEvent }, AddCommandRequeryHandlers);
     }
+
+    public void AddCommandRequeryHandlers(RoutedEvent Event)
+
+                                   => Event.AddClassHandler(typeof(TopLevel), (_, _) => CommandManager.NotifyCommandRequery(), RoutingStrategies.Direct | RoutingStrategies.Bubble, 0 == 0);
 }

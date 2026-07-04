@@ -8,9 +8,9 @@ public class Waiting
     {
         WaitIndicator Instance = CircleBar.Value;
 
-        Window Parents = Interop.TopmostWindow();
+        Window GetDad = Interop.TopmostWindow()!;
 
-        Instance.Show(Parents);
+        Instance.Show(GetDad);
 
         Instance.Owner!.IsEnabled = false;
     }

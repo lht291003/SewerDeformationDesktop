@@ -27,7 +27,7 @@ public class Build : Basis
 
     async Task BrowseYOLOSeg()
     {
-        IStorageProvider SP = Interop.TopmostWindow().StorageProvider;
+        IStorageProvider SP = Interop.TopmostWindow()!.StorageProvider;
 
         IReadOnlyList<IStorageFile> Files = await SP.OpenFilePickerAsync(new FilePickerOpenOptions
         {
@@ -48,11 +48,11 @@ public class Build : Basis
 
     async Task RemoveYOLOSeg()
     {
-        if (await Message.ShowConfirm("Bạn có muốn xóa mô hình này?"))
+        if (await Message.ShowConfirm("Bạn có muốn xóa mô hình này không?"))
         {
             if (YOLOSeg.Models.IsRunning)
             {
-                Message.ShowErrors("Không thể xóa, mô hình đang chạy");
+                await Message.ShowErrors("Không thể xóa, mô hình đang chạy");
             }
             else
             {
@@ -71,7 +71,7 @@ public class Build : Basis
     {
         if (YOLOSeg.Models.IsRunning)
         {
-            Message.ShowErrors("Không thể tải, mô hình hiên tại đang sử dụng");
+            await Message.ShowErrors("Không thể tải, mô hình cũ đang sử dụng");
         }
         else
         {
@@ -96,13 +96,13 @@ public class Build : Basis
 
             Waiting.HideProgressRing();
 
-            Message.ShowSuccess($"Mô hình {ModelName} đã tải lên thành công");
+            await Message.ShowSuccess($"Mô hình {ModelName} đã được tải lên");
         }
     }
 
     public Task RegisterForDropEventForUIElement(Control UIElement)
     {
-        UIElement.AddHandler(DragDrop.DropEvent, (Sender, Event) =>
+        UIElement.AddHandler(DragDrop.DropEvent, async (_, Event) =>
         {
             if (Event is DragEventArgs Drag && Drag.DataTransfer.TryGetFiles() is { } DroppedFiles)
             {
@@ -118,12 +118,12 @@ public class Build : Basis
                     }
                     else
                     {
-                        Message.ShowErrors("Tệp tin không hợp lệ hoặc không đúng định dạng .ONNX");
+                        await Message.ShowErrors("Tệp tin không hợp lệ hoặc không đúng định dạng .ONNX");
                     }
                 }
                 else
                 {
-                    Message.ShowErrors("Chức năng này chỉ cho phép nhận vào một tệp tin duy nhất");
+                    await Message.ShowErrors("Chức năng này chỉ cho phép nhận vào một tệp tin duy nhất");
                 }
             }
         });
