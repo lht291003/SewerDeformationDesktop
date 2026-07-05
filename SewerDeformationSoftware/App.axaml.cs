@@ -21,5 +21,5 @@ public partial class App : Application
 
     public void AddCommandRequeryHandlers(RoutedEvent Event)
 
-                                   => Event.AddClassHandler(typeof(TopLevel), (_, _) => CommandManager.NotifyCommandRequery(), RoutingStrategies.Direct | RoutingStrategies.Bubble, 0 == 0);
+                                => Event.AddClassHandler(typeof(TopLevel), (_, _) => CommandManager.NotifyCanExecuteChanged(), RoutingStrategies.Direct | RoutingStrategies.Bubble, 0 == 0);
 }

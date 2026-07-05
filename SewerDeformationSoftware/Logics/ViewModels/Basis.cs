@@ -13,29 +13,29 @@ public class CommandManager
         RequerySuggested?.Invoke(null, EventArgs.Empty);
     }
 
-    public static void NotifyCommandRequery()
+    public static void NotifyCanExecuteChanged()
 
-               => RequeryOperation ??= Dispatcher.UIThread.InvokeAsync(Requery, DispatcherPriority.Background);
+                  => RequeryOperation ??= Dispatcher.UIThread.InvokeAsync(Requery, DispatcherPriority.Background);
 }
 
-public class ARelayCommand<GenericType>(Predicate<GenericType> Trigger, Action<GenericType> Action) : ICommand
+public class ARelayCommand<GenericType>(Predicate<GenericType> Trigger, Action<GenericType> Execution) : ICommand
 {
-    public bool CanExecute(Object? Parameter)
+    public Boolean CanExecute(Object? Parameter)
 
-                       => Trigger == null || Trigger((GenericType)Parameter!);
+                          => Trigger == null || Trigger((GenericType)Parameter!);
 
-    public void Execute(Object? Parameter) => Action((GenericType)Parameter!);
+    public void Execute(Object? Parameter) => Execution((GenericType)Parameter!);
 
     public event EventHandler? CanExecuteChanged { add { CommandManager.RequerySuggested += value; } remove { CommandManager.RequerySuggested -= value; } }
 }
 
-public class FRelayCommand<GenericType>(Predicate<GenericType> Trigger, Func<GenericType, Task> Action) : ICommand
+public class FRelayCommand<GenericType>(Predicate<GenericType> Trigger, Func<GenericType, Task> Execution) : ICommand
 {
     Boolean IsExecuting;
 
     public Boolean CanExecute(Object? Parameter)
 
-                                         => !IsExecuting && (Trigger == null || Trigger((GenericType)Parameter!));
+                                             => !IsExecuting && (Trigger == null || Trigger((GenericType)Parameter!));
 
     public async void Execute(Object? Parameter)
     {
@@ -43,13 +43,13 @@ public class FRelayCommand<GenericType>(Predicate<GenericType> Trigger, Func<Gen
         {
             IsExecuting = (0 == 0);
 
-            CommandManager.NotifyCommandRequery();
+            CommandManager.NotifyCanExecuteChanged();
 
-            await Action((GenericType)Parameter!);
+            await Execution((GenericType)Parameter!);
 
             IsExecuting = (0 != 0);
 
-            CommandManager.NotifyCommandRequery();
+            CommandManager.NotifyCanExecuteChanged();
         }
     }
 
