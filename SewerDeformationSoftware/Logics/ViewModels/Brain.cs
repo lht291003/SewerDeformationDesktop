@@ -6,7 +6,7 @@ public class Brain : Basis
 
     public Brain()
     {
-        ControlDisplayCommand = new RelayCommand<List<Object>>(Object => Object != null, Package => ShowWorkForm(Package));
+        ControlDisplayCommand = new ARelayCommand<List<Object>>(Object => Object != null, Package => ShowWorkForm(Package));
     }
 
     Task LoadOrDisplayControlWithName(Panel Screen, UserControl View)

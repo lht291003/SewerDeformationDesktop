@@ -16,11 +16,11 @@ public class Build : Basis
 
     public Build()
     {
-        Browse = new RelayCommand<Object>(Obj => Obj == null, async Obj => await BrowseYOLOSeg());
+        Browse = new FRelayCommand<Object>(Obj => Obj == null, async Obj => await BrowseYOLOSeg());
 
-        Remove = new RelayCommand<Object>(Obj => Obj == null, async Obj => await RemoveYOLOSeg());
+        Remove = new FRelayCommand<Object>(Obj => Obj == null, async Obj => await RemoveYOLOSeg());
 
-        Upload = new RelayCommand<Object>(Obj => CanAccept(), async Obj => await UploadYOLOSeg());
+        Upload = new FRelayCommand<Object>(Obj => CanAccept(), async Obj => await UploadYOLOSeg());
     }
 
     Boolean CanAccept() => (!String.IsNullOrEmpty(ModelPath) && !String.IsNullOrEmpty(GetDevice));
