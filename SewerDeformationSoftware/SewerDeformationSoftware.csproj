@@ -31,7 +31,7 @@
 	<PackageReference Include="Material.Avalonia" Version="3.17.0" />
     <PackageReference Include="EPPlus" Version="8.6.1" />
     <PackageReference Include="Avalonia" Version="12.0.5" />
-    <PackageReference Include="YoloSharpOnnx" Version="3.2.3" />
+    <PackageReference Include="YoloSharpOnnx" Version="3.3.0" />
     <PackageReference Include="Avalonia.Desktop" Version="12.0.5" />
 	<PackageReference Include="Xaml.Behaviors.Avalonia" Version="12.0.5" />
   </ItemGroup>
