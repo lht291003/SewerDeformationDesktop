@@ -1,48 +1,49 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <LangVersion>14.0</LangVersion>
-    <Nullable>Enable</Nullable>
-    <TargetFramework>net10.0</TargetFramework>
-    <BaseOutputPath>Avalonia\</BaseOutputPath>
-  </PropertyGroup>
+	<PropertyGroup>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+        <OutputType>WinExe</OutputType>
+        <LangVersion>14.0</LangVersion>
+        <Nullable>Enable</Nullable>
+        <TargetFramework>net10.0</TargetFramework>
+        <BaseOutputPath>Avalonia\</BaseOutputPath>
+    </PropertyGroup>
 	
-  <ItemGroup>
-    <None Remove="Images\BuildImg.svg" />
-    <None Remove="Images\FilesImg.svg" />
-    <None Remove="Images\ModelImg.svg" />
-    <None Remove="Images\PhotoImg.svg" />
-    <None Remove="Images\VideoImg.svg" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Remove="Images\BuildImg.svg" />
+        <None Remove="Images\FilesImg.svg" />
+        <None Remove="Images\ModelImg.svg" />
+        <None Remove="Images\PhotoImg.svg" />
+        <None Remove="Images\VideoImg.svg" />
+    </ItemGroup>
 	
-  <ItemGroup>
-    <AvaloniaResource Include="Images\BuildImg.svg" />
-    <AvaloniaResource Include="Images\FilesImg.svg" />
-    <AvaloniaResource Include="Images\ModelImg.svg" />
-    <AvaloniaResource Include="Images\PhotoImg.svg" />
-    <AvaloniaResource Include="Images\VideoImg.svg" />
-  </ItemGroup>
+    <ItemGroup>
+        <AvaloniaResource Include="Images\BuildImg.svg" />
+        <AvaloniaResource Include="Images\FilesImg.svg" />
+        <AvaloniaResource Include="Images\ModelImg.svg" />
+        <AvaloniaResource Include="Images\PhotoImg.svg" />
+        <AvaloniaResource Include="Images\VideoImg.svg" />
+    </ItemGroup>
 
-  <ItemGroup>
-	<PackageReference Include="Svg.Controls.Skia.Avalonia" Version="12.0.0.13" />
-    <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.5" />
-	<PackageReference Include="MessageBox.Avalonia" Version="12.0.0" />
-	<PackageReference Include="ScottPlot.Avalonia" Version="5.1.59" />
-	<PackageReference Include="Material.Avalonia" Version="3.17.0" />
-    <PackageReference Include="EPPlus" Version="8.6.1" />
-    <PackageReference Include="Avalonia" Version="12.0.5" />
-    <PackageReference Include="YoloSharpOnnx" Version="3.3.0" />
-    <PackageReference Include="Avalonia.Desktop" Version="12.0.5" />
-	<PackageReference Include="Xaml.Behaviors.Avalonia" Version="12.0.5" />
-  </ItemGroup>
+    <ItemGroup>
+	    <PackageReference Include="MessageBox.Avalonia" Version="12.0.0" />
+	    <PackageReference Include="ScottPlot.Avalonia" Version="5.1.59" />
+	    <PackageReference Include="Material.Avalonia" Version="3.17.0" />
+        <PackageReference Include="EPPlus" Version="8.6.3" />
+        <PackageReference Include="Avalonia" Version="12.1.0" />
+        <PackageReference Include="YoloSharpOnnx" Version="3.3.1" />
+        <PackageReference Include="Avalonia.Desktop" Version="12.1.0" />
+	    <PackageReference Include="Avalonia.Fonts.Inter" Version="12.1.0" />
+	    <PackageReference Include="Xaml.Behaviors.Avalonia" Version="12.0.5" />
+	    <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="12.0.0.13" />
+    </ItemGroup>
 
-  <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
-    <PackageReference Include="Microsoft.ML.OnnxRuntime.DirectML" Version="1.24.4" />
-	<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.13.0.20260627" />
-  </ItemGroup>
+    <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
+        <PackageReference Include="Microsoft.ML.OnnxRuntime.DirectML" Version="1.24.4" />
+	    <PackageReference Include="OpenCvSharp4.Runtime.Win" Version="4.13.0.20260627" />
+    </ItemGroup>
 	
-  <ItemGroup Condition="'$(OS)' != 'Windows_NT'">
-    <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu.Linux" Version="1.26.0" />
-	<PackageReference Include="OpenCvSharp4.official.runtime.linux-x64" Version="4.13.0.20260627" />
-  </ItemGroup>
+    <ItemGroup Condition="'$(OS)' != 'Windows_NT'">
+        <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu.Linux" Version="1.26.0" />
+	    <PackageReference Include="OpenCvSharp4.Official.Runtime.Linux-X64" Version="4.13.0.20260627" />
+    </ItemGroup>
 </Project>
