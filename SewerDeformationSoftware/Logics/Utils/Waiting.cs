@@ -8,7 +8,7 @@ public class Waiting
     {
         WaitIndicator Instance = CircleBar.Value;
 
-        Window GetDad = Interop.TopmostWindow()!;
+        Window GetDad = Miscell.TopmostWindow()!;
 
         Instance.Show(GetDad);
 

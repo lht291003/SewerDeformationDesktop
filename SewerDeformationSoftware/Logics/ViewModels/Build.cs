@@ -27,7 +27,7 @@ public class Build : Basis
 
     async Task BrowseYOLOSeg()
     {
-        IStorageProvider SP = Interop.TopmostWindow()!.StorageProvider;
+        IStorageProvider SP = Miscell.TopmostWindow()!.StorageProvider;
 
         IReadOnlyList<IStorageFile> Files = await SP.OpenFilePickerAsync(new FilePickerOpenOptions
         {
