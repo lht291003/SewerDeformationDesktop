@@ -3,10 +3,14 @@
     xmlns:DBContextFiles="using:SewerDeformationSoftware.Logics.ViewModels"
     xmlns:ConverterFiles="using:SewerDeformationSoftware.Logics.Converters"
     xmlns:MDTheme="using:Material.Styles.Themes"
+    xmlns:MDCtl="using:Material.Styles.Controls"
     X:Class="SewerDeformationSoftware.App" RequestedThemeVariant="Default">
-    
+
     <Application.Styles>
         <MDTheme:MaterialTheme PrimaryColor="Indigo" SecondaryColor="Lime" BaseTheme="Inherit"/>
+        <Style Selector="MDCtl|Card">
+            <Setter Property="Padding" Value="0"/>
+        </Style>
     </Application.Styles>
 
     <Application.Resources>

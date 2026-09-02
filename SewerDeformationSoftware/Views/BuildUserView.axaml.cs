@@ -1,3 +1,3 @@
 namespace SewerDeformationSoftware.Views;
 
-public partial class BuildUserView : UserControl { public BuildUserView() { InitializeComponent(); ((Build)DataContext!).RegisterForDropEventForUIElement(DropCard); } }
+public partial class BuildUserView : UserControl { public BuildUserView() { InitializeComponent(); ((Build)DataContext!).RegisterForDropEventForUIElement(FileUploader); } }

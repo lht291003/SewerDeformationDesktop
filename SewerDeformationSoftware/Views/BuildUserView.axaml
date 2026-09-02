@@ -24,8 +24,7 @@
                     <RowDefinition Height="10.0"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Material:Card
-                    Padding="0.00" X:Name="DropCard" DragDrop.AllowDrop="True">
+                <Material:Card X:Name="FileUploader" DragDrop.AllowDrop="True">
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50"/>
@@ -73,8 +72,7 @@
                         <TextBlock
                             Text="{Binding ModelName}"
                             VerticalAlignment="Center"
-                            Grid.Column="2"
-                            FontWeight="ExtraBlack"/>
+                            Grid.Column="2" FontWeight="Black"/>
                         <Button Content="Remove" Grid.Column="4" Height="50.0" Command="{Binding Remove}"/>
                     </Grid>
                     <Grid

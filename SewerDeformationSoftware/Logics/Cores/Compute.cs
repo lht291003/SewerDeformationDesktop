@@ -2,6 +2,33 @@
 
 public class Compute
 {
+    public static async Task<(Mat, Mat, RotatedRect?, Dictionary<String, Object>?)> Quantifies(YoloSharp YoloSeg, Mat Image)
+    {
+        List<SegResult> Results = await Task.Run(() => YoloSeg.RunSegment(Image));
+
+        YoloSeg.DrawSegment(Image, Results);
+
+        if (Results.Count != 0)
+        {
+            SegResult FirstMask = Results.MaxBy(S => S.Box.Width * S.Box.Height)!;
+
+            using Mat GetBinaryMask = CreateBinMaskImage(FirstMask, Image.Size());
+
+            (Mat Mask, RotatedRect Ellipse, Dictionary<String, Object> Specifications)? Data = GetAnalizedMask(GetBinaryMask);
+
+            if (Data != null)
+            {
+                return (Image, Data.Value.Mask, Data.Value.Ellipse, Data.Value.Specifications);
+            }
+        }
+
+        return (Image, CreateZeroMask(Image.Size(), MatType.CV_8UC1), null, null);
+    }
+
+    public static async Task<(Mat, Mat, RotatedRect?, Dictionary<String, Object>?)> Quantifies(YoloSharp YoloSeg, String Path)
+
+                                                                               => await Quantifies(YoloSeg, Cv2.ImRead(Path));
+
     public static Point[]? GetMaxContour(Mat Mask)
     {
         Cv2.FindContours(Mask, out Point[][] Contours, out HierarchyIndex[] _, RetrievalModes.External, ContourApproximationModes.ApproxNone);
@@ -128,6 +155,38 @@ public class Compute
         }
     }
 
+    public static Mat CreateZeroMask(Size ImageSize, MatType Type)
+
+                                                 => Mat.Zeros(ImageSize, Type);
+
+    public static unsafe Mat CreateBinMaskImage(SegResult SObj, Size ImageSize)
+    {
+        Mat NewMask = CreateZeroMask(ImageSize, MatType.CV_8UC1);
+
+        using Mat ROI = new(NewMask, SObj.Box);
+
+        (Int32 BW, Int32 BH) = (SObj.Box.Width, SObj.Box.Height);
+
+        (Int32 Len, Int64 ROIStep) = ((BW * BH), ROI.Step());
+
+        Byte[] MaskBuffer = ArrayPool<Byte>.Shared.Rent(Len);
+
+        YoloUtils.UnpackMask(SObj.PackMask, MaskBuffer, Len);
+
+        Span<Byte> Dst = new(ROI.Data.ToPointer(), (Int32)(ROIStep * BH));
+
+        Span<Byte> Src = MaskBuffer.AsSpan(0, Len);
+
+        for (Int32 Idx = 0; Idx < BH; Idx++)
+        {
+            Src.Slice(Idx * BW, BW).CopyTo(Dst[(Idx * (Int32)ROIStep)..]);
+        }
+
+        ArrayPool<Byte>.Shared.Return(MaskBuffer);
+
+        return NewMask;
+    }
+
     public static (RotatedRect, Mat) GetFittedEllipseMask(Mat Mask, Point[] Contour)
     {
         Mat EM = CreateZeroMask(Mask.Size(), Mask.Type());
@@ -138,33 +197,6 @@ public class Compute
 
         return (NewEllipse, EM);
     }
-
-    public static unsafe Mat CreateBinMaskImage(SegResult SegObject, Size ImageSize)
-    {
-        Mat ZeroMask = CreateZeroMask(ImageSize, MatType.CV_8UC1);
-
-        using Mat ROI = new(ZeroMask, SegObject.Box);
-
-        Int32 BoxDim = SegObject.Box.Width * SegObject.Box.Height;
-
-        Byte[] UnpackedMask = ArrayPool<Byte>.Shared.Rent(BoxDim);
-
-        YoloUtils.UnpackMask(SegObject.PackMask, UnpackedMask, BoxDim);
-
-        Span<Byte> Src = new(UnpackedMask, 0, BoxDim);
-
-        Span<Byte> Dst = new(ROI.DataPointer, BoxDim);
-
-        Src.CopyTo(Dst);
-
-        ArrayPool<Byte>.Shared.Return(UnpackedMask);
-
-        return ZeroMask;
-    }
-
-    public static Mat CreateZeroMask(Size ImageSize, MatType Type)
-
-                                                     => Mat.Zeros(ImageSize, Type);
 
     public static Mat GetPlotMask(Mat Mask, RotatedRect? EllipseData, String Shape)
     {
@@ -224,6 +256,13 @@ public class Compute
         }
 
         return VMask;
+    }
+
+    public static WriteableBitmap GetPlotMaskAsWriteableBitmap(Mat Mask, RotatedRect? EllipseData, String Shape)
+    {
+        using Mat VisualMask = GetPlotMask(Mask, EllipseData, Shape);
+
+        return Miscell.ToWriteableBitmap(VisualMask);
     }
 
     public static (Mat, RotatedRect, Dictionary<String, Object>)? GetAnalizedMask(Mat Mask)
