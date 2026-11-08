@@ -134,7 +134,7 @@ public class Photo : Basis
 
             AllowMultiple = false,
 
-            FileTypeFilter = [new FilePickerFileType("Dữ liệu") { Patterns = ["*.PNG", "*.JPG", "*.JPEG", "*.WEBP", "*.BMP", "*.TIFF"] }]
+            FileTypeFilter = [new FilePickerFileType("Photo") { Patterns = ["*.PNG", "*.JPG", "*.JPEG", "*.WEBP", "*.BMP", "*.TIFF"] }]
         });
 
         if (Files.Count >= 1)
