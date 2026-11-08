@@ -26,8 +26,8 @@ public class Compute
     }
 
     public static async Task<(Mat, Mat, RotatedRect?, Dictionary<String, Object>?)> Quantifies(YoloSharp YoloSeg, String Path)
-
-                                                                               => await Quantifies(YoloSeg, Cv2.ImRead(Path));
+        
+                            => await Quantifies(YoloSeg, Cv2.ImDecode(await File.ReadAllBytesAsync(Path), ImreadModes.Color));
 
     public static Point[]? GetMaxContour(Mat Mask)
     {
