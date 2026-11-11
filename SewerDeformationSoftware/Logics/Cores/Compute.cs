@@ -260,9 +260,9 @@ public class Compute
 
     public static WriteableBitmap GetPlotMaskAsWriteableBitmap(Mat Mask, RotatedRect? EllipseData, String Shape)
     {
-        using Mat VisualMask = GetPlotMask(Mask, EllipseData, Shape);
+        using Mat PlotMask = GetPlotMask(Mask, EllipseData, Shape);
 
-        return Miscell.ToWriteableBitmap(VisualMask);
+        return Miscell.ToWriteableBitmap(PlotMask);
     }
 
     public static (Mat, RotatedRect, Dictionary<String, Object>)? GetAnalizedMask(Mat Mask)

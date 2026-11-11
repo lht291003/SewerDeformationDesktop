@@ -13,6 +13,7 @@ global using Avalonia.Threading;
 global using MsBox.Avalonia;
 global using MsBox.Avalonia.Enums;
 global using OpenCvSharp;
+global using OpenCvSharp.AvaloniaExtensions;
 global using SewerDeformationSoftware.Logics.Cores;
 global using SewerDeformationSoftware.Logics.Utils;
 global using SewerDeformationSoftware.Logics.ViewModels;

@@ -29,21 +29,22 @@
 	    <PackageReference Include="ScottPlot.Avalonia" Version="5.1.59" />
 	    <PackageReference Include="Material.Avalonia" Version="3.21.0" />
         <PackageReference Include="EPPlus" Version="8.7.2" />
-        <PackageReference Include="Avalonia" Version="12.1.5" />
-        <PackageReference Include="YoloSharpOnnx" Version="3.3.3" />
-        <PackageReference Include="Avalonia.Desktop" Version="12.1.5" />
-	    <PackageReference Include="Avalonia.Fonts.Inter" Version="12.1.5" />
+        <PackageReference Include="Avalonia" Version="12.1.6" />
+        <PackageReference Include="YoloSharpOnnx" Version="3.4.0" />
+        <PackageReference Include="Avalonia.Desktop" Version="12.1.6" />
+	    <PackageReference Include="Avalonia.Fonts.Inter" Version="12.1.6" />
 	    <PackageReference Include="Xaml.Behaviors.Avalonia" Version="12.1.5" />
 	    <PackageReference Include="Svg.Controls.Skia.Avalonia" Version="12.0.0.17" />
+		<PackageReference Include="OpenCvSharp5.AvaloniaExtensions" Version="5.0.00.20261109" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(OS)' == 'Windows_NT'">
         <PackageReference Include="Microsoft.ML.OnnxRuntime.DirectML" Version="1.24.4" />
-	    <PackageReference Include="OpenCvSharp4.Runtime.Win" Version="4.13.0.20261107" />
+	    <PackageReference Include="OpenCvSharp5.Runtime.Win" Version="5.0.00.20261109" />
     </ItemGroup>
 	
     <ItemGroup Condition="'$(OS)' != 'Windows_NT'">
         <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu.Linux" Version="1.26.0" />
-	    <PackageReference Include="OpenCvSharp4.Official.Runtime.Linux-X64" Version="4.13.0.20261107" />
+	    <PackageReference Include="OpenCvSharp5.Official.Runtime.Linux-X64" Version="5.0.00.20261109" />
     </ItemGroup>
 </Project>
